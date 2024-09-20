@@ -1,0 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Prata&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities; 
+
+*{
+    user-select: none;
+    font-family: prata-regular;
+}
+
+.prata-regular {
+    font-family: "Prata", serif;
+    font-weight: 600;
+    font-style: normal;
+  }
+
+::-webkit-scrollbar {
+    display: none;
+}  
+
+.linear{
+    background-image: linear-gradient(to right, #0077ff, #397539, #a1a1d5);
+    font-family: sans-serif;
+ 
+    color: transparent; 
+    -webkit-background-clip: text; 
+    -webkit-text-fill-color: transparent;
+}
