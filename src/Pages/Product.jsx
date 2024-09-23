@@ -33,24 +33,24 @@ const Product = () => {
         <div className='flex gap-12  flex-col sm:flex-row'>
             {/* product images */}
             <div className='flex-1 flex flex-col-reverse gap-3 sm:flex-row'>
-                 <div className='flex flex-col overflow-x-auto sm:overflow-y-scroll justify-between sm:justify-normal sm:w-[18.7%] w-full '>
-                    {productdata.image.map((item,index)=> 
-                        <img onClick={()=> setimage(item)} className='w-[24%] sm:w-full sm:mb-3 flex-shrink-0 cursor-pointer' src={item} key={index} alt="" />
-                    )}
-                 </div>
-                 <div className='w-full sm:w-[89%]'>
-                      <img className=' w-full h-auto ' src={image} alt="" />
-                 </div>
+                <div className='flex flex-col overflow-x-auto sm:overflow-y-scroll justify-between sm:justify-normal sm:w-[18.7%] w-full '>
+                   {productdata.image.map((item,index)=> 
+                       <img onClick={()=> setimage(item)} className='w-[24%] sm:w-full sm:mb-3 flex-shrink-0 cursor-pointer' src={item} key={index} alt="" />
+                   )}
+                </div>
+                <div className='w-full sm:w-[89%]'>
+                     <img className=' w-full h-auto ' src={image} alt="" />
+                </div>
             </div>
             {/* product info */}
             <div className='flex-1 '>
                 <h1 className='font-medium text-2xl   '>{productdata.name}</h1>
                 <div className='flex items-center gap-1 mt-2'>
-                    <img className='w-3 ' src={assets.star_icon} alt="" />
-                    <img className='w-3 ' src={assets.star_icon} alt="" />
-                    <img className='w-3 ' src={assets.star_icon} alt="" />
-                    <img className='w-3 ' src={assets.star_icon} alt="" />
-                    <img className='w-3 ' src={assets.star_dull_icon} alt="" />
+                    <img className='w-3' src={assets.star_icon} alt="" />
+                    <img className='w-3' src={assets.star_icon} alt="" />
+                    <img className='w-3' src={assets.star_icon} alt="" />
+                    <img className='w-3' src={assets.star_icon} alt="" />
+                    <img className='w-3' src={assets.star_dull_icon} alt="" />
                     <p className='pl-2'>(122)</p>
                 </div>
                 <p className=' mt-4 text-3xl font-medium'>{currency}{productdata.price}</p>

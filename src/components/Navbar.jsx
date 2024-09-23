@@ -1,11 +1,39 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { assets } from "../assets/assets";
+import { gsap } from 'gsap';
+
 import { Shopcontext } from "../context/Shopcontext";
 
 const Navbar = () => {
   const [visible, setvisible] = useState(false);
   const { search, showsearch, setshowsearch, cartCount } = useContext(Shopcontext);
+
+
+  // gsap.from(".first", {
+  //   x: -100,
+  //   opacity: 0,
+  //   duration: 1,
+  //   stagger: 1,
+  //   repeat: -1,  // Makes the animation repeat indefinitely
+  //   yoyo: true  // Makes the animation reverse back after each cycle
+  // })
+  
+    useEffect(() => {
+      gsap.from(".first", { 
+        y : 20,
+        duration: 1, 
+        delay:1,
+        stagger :1,
+        opacity :0
+      });
+    }, [])
+
+    // useEffect(() => {
+    //   const tl = gsap.timeline();
+    //     tl.to(".first", {x:-5, duration: 1 ,stagger :1 ,repeat:-1, yoyo:true});
+    //     tl.to(".first", { y: 10, duration: 1 ,stagger :1 ,repeat:-1, yoyo:true});
+    // }, [])
 
   return (
     <div className="items-center flex justify-between py-6  font-medium">
@@ -15,18 +43,18 @@ const Navbar = () => {
           to="/"
           className={(e) =>
             e.isActive
-              ? "text-red-500  flex flex-col items-center gap-1"
-              : "flex"
+              ? "text-red-500 first flex flex-col items-center gap-1"
+              : "flex first"
           }>
           <p className="font-[600]">HOME</p>
           <hr className="w-[60%] h-[1.5px]  border-none bg-gray-900" />
         </NavLink>
-        <NavLink
+        <NavLink 
           to="/collection"
           className={(e) =>
             e.isActive
-              ? "text-red-500 flex flex-col items-center gap-1"
-              : "flex "
+              ? "text-red-500 flex first flex-col items-center gap-1"
+              : "flex first "
           }>
           <p className="font-[600]">COLLECTION</p>
           <hr className="w-[60%] h-[1.5px]  border-none bg-gray-900" />
@@ -35,8 +63,8 @@ const Navbar = () => {
           to="/about"
           className={(e) =>
             e.isActive
-              ? "text-red-500 flex flex-col items-center gap-1"
-              : "flex "
+              ? "text-red-500 first flex flex-col items-center gap-1"
+              : "flex first "
           }>
           <p className="font-[600]">ABOUT</p>
           <hr className="w-[60%] h-[1.5px] border-none bg-gray-900" />
@@ -45,8 +73,8 @@ const Navbar = () => {
           to="/contact"
           className={(e) =>
             e.isActive
-              ? "text-red-500 flex  flex-col items-center gap-1"
-              : "flex "
+              ? "text-red-500 flex first  flex-col items-center gap-1"
+              : "flex  first"
           }>
           <p className="font-[600]">CONTACT</p>
           <hr className="w-[60%] h-[1.5px] border-none bg-gray-900" />

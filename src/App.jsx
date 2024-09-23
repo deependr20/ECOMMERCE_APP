@@ -17,7 +17,7 @@ import Orders from './Pages/Orders'
 
 const App = () => {
   return (
-    <div className='  px-4 sm:px-6  md:px-[7vw] lg:px-[9vw]'>
+    <div className='  px-4 sm:px-6   md:px-[7vw] lg:px-[9vw]'>
         <ToastContainer />  
         <Navbar />
         <Searchbar />
