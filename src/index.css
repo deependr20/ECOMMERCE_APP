@@ -4,7 +4,6 @@
 @tailwind utilities; 
 
 *{
-    /* user-select: none; */
     font-family: prata-regular;
 }
 
@@ -21,8 +20,8 @@
 .linear{
     background-image: linear-gradient(to right, #0077ff, #397539, #a1a1d5);
     font-family: sans-serif;
- 
     color: transparent; 
     -webkit-background-clip: text; 
     -webkit-text-fill-color: transparent;
 }
+

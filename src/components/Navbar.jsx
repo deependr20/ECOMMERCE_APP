@@ -2,23 +2,13 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { assets } from "../assets/assets";
 import { gsap } from 'gsap';
-
 import { Shopcontext } from "../context/Shopcontext";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
   const [visible, setvisible] = useState(false);
-  const { search, showsearch, setshowsearch, cartCount } = useContext(Shopcontext);
+  const { search, showsearch, setshowsearch, cartCount } = useContext(Shopcontext)
 
-
-  // gsap.from(".first", {
-  //   x: -100,
-  //   opacity: 0,
-  //   duration: 1,
-  //   stagger: 1,
-  //   repeat: -1,  // Makes the animation repeat indefinitely
-  //   yoyo: true  // Makes the animation reverse back after each cycle
-  // })
-  
     useEffect(() => {
       gsap.from(".first", { 
         y : 20,
@@ -26,14 +16,8 @@ const Navbar = () => {
         delay:1,
         stagger :1,
         opacity :0
-      });
+      })
     }, [])
-
-    // useEffect(() => {
-    //   const tl = gsap.timeline();
-    //     tl.to(".first", {x:-5, duration: 1 ,stagger :1 ,repeat:-1, yoyo:true});
-    //     tl.to(".first", { y: 10, duration: 1 ,stagger :1 ,repeat:-1, yoyo:true});
-    // }, [])
 
   return (
     <div className="items-center flex justify-between py-6  font-medium">
@@ -82,25 +66,25 @@ const Navbar = () => {
       </ul>
 
       <div className="flex items-center gap-6">
-        <img onClick={() => setshowsearch(prev => !prev)} className="w-4 cursor-pointer" src={assets.search_icon} alt="" />
-        <div className="group relative ">
-          <Link><img className="w-4 cursor-pointer" src={assets.profile_icon} alt="" /></Link>
-          <div className="relative group">
-            <div className="hidden absolute dropdown-menu right-0 pt-5 group-hover:block">
-              <div className="flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-grey-900">
-                <Link to={"/"} className="cursor-pointer hover:text-slate-500">My Profile</Link>
-                <Link to={"/orders"} className="cursor-pointer hover:text-slate-500">Orders</Link>
-                <Link to={"/Login"} className="cursor-pointer hover:text-slate-500">Logout</Link>
+          <img onClick={() => setshowsearch(prev => !prev)} className="w-4 second cursor-pointer" src={assets.search_icon} alt="" />
+          <div className="group relative ">
+              <Link><img className="w-4 cursor-pointer second" src={assets.profile_icon} alt="" /></Link>
+              <div className="relative group">
+                  <div className="hidden absolute dropdown-menu right-0 pt-5 group-hover:block">
+                      <div className="flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-grey-900">
+                        <Link to={"/"} className="cursor-pointer hover:text-slate-500">My Profile</Link>
+                        <Link to={"/orders"} className="cursor-pointer hover:text-slate-500">Orders</Link>
+                        <Link onClick={()=> toast("logged out succesfully")} to={"/Login"} className="cursor-pointer hover:text-slate-500">Logout</Link>
+                      </div>
+                  </div>
               </div>
-            </div>
           </div>
-        </div>
 
         <Link className="cursor-pointer flex relative" to={"/cart"}>
-          <img className="w-5" src={assets.cart_icon} alt="" />
-          <div className="absolute text-xs w-[1rem] text-center right-[-10%] bottom-[-20%]  rounded-full bg-black text-white ">
-            {cartCount()}
-          </div>
+            <img className="w-5" src={assets.cart_icon} alt="" />
+            <div className="absolute text-xs w-[1rem] text-center right-[-10%] bottom-[-20%]  rounded-full bg-black text-white ">
+              {cartCount()}
+            </div>
         </Link>
 
         {/* Fix here: Wrap setvisible in a function for onClick */}
@@ -109,16 +93,16 @@ const Navbar = () => {
 
       {/* sidebar component for menu button */}
       <div className={`absolute top-0 right-0 bottom-0 flex sm:hidden overflow-hidden bg-white transition-all duration-500 ${visible ? "w-full" : "w-0"} `}>
-        <div className="flex flex-col w-full text-gray-600 ">
-          <div onClick={() => setvisible(false)} className="flex items-center gap-4 p-3 cursor-pointer">
-            <img className="w-2 rotate-180" src={assets.dropdown_icon} alt="" />
-            <p className="text-lg text-gray-600">Back</p>
-          </div>
-          <NavLink onClick={() => setvisible(false)} to={"/"} className={(e) => e.isActive ? "border pl-6 py-2 sm:bg-none bg-black sm:text-black text-white" : "border pl-6 py-2 "}>HOME</NavLink>
-          <NavLink onClick={() => setvisible(false)} to={"/collection"} className={(e) => e.isActive ? "border pl-6 py-2 sm:bg-none bg-black sm:text-black text-white" : "border pl-6 py-2 "}>COLLECTION</NavLink>
-          <NavLink onClick={() => setvisible(false)} to={"/about"} className={(e) => e.isActive ? "border pl-6 py-2 sm:bg-none bg-black sm:text-black text-white" : "border pl-6 py-2 "}>ABOUT</NavLink>
-          <NavLink onClick={() => setvisible(false)} to={"/contact"} className={(e) => e.isActive ? "border pl-6 py-2 sm:bg-none bg-black sm:text-black text-white" : "border pl-6 py-2 "}>CONTACT</NavLink>
-        </div>
+          <div className="flex flex-col w-full text-gray-600 ">
+              <div onClick={() => setvisible(false)} className="flex items-center gap-4 p-3 cursor-pointer">
+                <img className="w-2 rotate-180" src={assets.dropdown_icon} alt="" />
+                <p className="text-lg text-gray-600">Back</p>
+              </div>
+                <NavLink onClick={() => setvisible(false)} to={"/"} className={(e) => e.isActive ? "border pl-6 py-2 sm:bg-none bg-black sm:text-black text-white" : "border pl-6 py-2 "}>HOME</NavLink>
+                <NavLink onClick={() => setvisible(false)} to={"/collection"} className={(e) => e.isActive ? "border pl-6 py-2 sm:bg-none bg-black sm:text-black text-white" : "border pl-6 py-2 "}>COLLECTION</NavLink>
+                <NavLink onClick={() => setvisible(false)} to={"/about"} className={(e) => e.isActive ? "border pl-6 py-2 sm:bg-none bg-black sm:text-black text-white" : "border pl-6 py-2 "}>ABOUT</NavLink>
+                <NavLink onClick={() => setvisible(false)} to={"/contact"} className={(e) => e.isActive ? "border pl-6 py-2 sm:bg-none bg-black sm:text-black text-white" : "border pl-6 py-2 "}>CONTACT</NavLink>
+            </div>
       </div>
     </div>
   );

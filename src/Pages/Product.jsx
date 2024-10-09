@@ -16,11 +16,11 @@ const Product = () => {
       products.map((item)=>{
         if (item._id === productId) {
           setproductdata(item)
-          setimage(item.image[0])
+          setimage(item.image[0]) 
           // console.log(item);
         } 
       })
-  }
+  }  
   //  console.log(products);
    
   useEffect(()=>{
@@ -33,7 +33,7 @@ const Product = () => {
         <div className='flex gap-12  flex-col sm:flex-row'>
             {/* product images */}
             <div className='flex-1 flex flex-col-reverse gap-3 sm:flex-row'>
-                <div className='flex flex-col overflow-x-auto sm:overflow-y-scroll justify-between sm:justify-normal sm:w-[18.7%] w-full '>
+                <div className='flex sm:flex-col overflow-x-auto sm:overflow-y-scroll justify-between sm:justify-normal sm:w-[18.7%] w-full '>
                    {productdata.image.map((item,index)=> 
                        <img onClick={()=> setimage(item)} className='w-[24%] sm:w-full sm:mb-3 flex-shrink-0 cursor-pointer' src={item} key={index} alt="" />
                    )}
@@ -84,7 +84,7 @@ const Product = () => {
             </div>
         </div>
         {/* display related products */}
-        <Relatedproducts  category={productdata.category} subcategory={productdata.subcategory} />
+        <Relatedproducts  category={productdata.category}   />
     </div>
   ) : <div className='opacity-0'></div>
 }

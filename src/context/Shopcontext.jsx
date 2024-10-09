@@ -11,7 +11,6 @@ const Shopcontextprovider = (props)=>{
     const [showsearch, setshowsearch] = useState(false)
     const [cartItems, setcartItems] = useState({})
 
-
     const addtoCart = async (itemId,size)=>{
         let cartdata = {...cartItems}
         if (!size) {
@@ -21,12 +20,15 @@ const Shopcontextprovider = (props)=>{
         if (cartdata[itemId]) {
             if (cartdata[itemId][size]) {
                 cartdata[itemId][size] += 1
+                toast("Product is added")
             } else {
                 cartdata[itemId][size] = 1
+                toast("Product is added")
             }
         } else {
             cartdata[itemId] ={}
             cartdata[itemId][size] =1
+            toast("Product is added")
         }
         setcartItems(cartdata)
     }
@@ -61,7 +63,7 @@ const Shopcontextprovider = (props)=>{
     }
 
     useEffect(()=>{
-        console.log(cartItems);
+        // console.log(cartItems);
     },[cartItems])
 
     const value ={products,currency,delivery_fee,search, setshowsearch, setsearch,showsearch,cartItems,addtoCart,cartCount,updateQuantity, getcartamount }
